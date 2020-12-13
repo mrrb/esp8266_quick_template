@@ -9,11 +9,12 @@ OBJ   := $(BUILD)/obj
 SRCS := $(wildcard $(SRC)/*.c)
 OBJS := $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 
+SDK_INC := "$(ESP8266_SDK_ROOT)/ESP8266_NONOS_SDK-2.1.0-18-g61248df/driver_lib/include/"
 
 #
 CC = xtensa-lx106-elf-gcc
-CFLAGS = -I$(SRC) -I$(INC) -DICACHE_FLASH -mlongcalls
-LDLIBS = -nostdlib -Wl,--start-group -lmain -lnet80211 -lwpa -llwip -lpp -lphy -lc -Wl,--end-group -lgcc
+CFLAGS = -I$(SRC) -I$(SDK_INC) -I$(INC) -DICACHE_FLASH -mlongcalls
+LDLIBS = -nostdlib -Wl,--start-group -lmain -ldriver -lnet80211 -lwpa -llwip -lpp -lphy -lc -Wl,--end-group -lgcc
 LDFLAGS = -Teagle.app.v6.ld
 
 #
