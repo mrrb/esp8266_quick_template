@@ -18,7 +18,7 @@ OBJS := $(OBJS_USER) $(OBJS_LIBS)
 
 #
 CC = xtensa-lx106-elf-gcc
-CFLAGS = -I$(SRC) -I$(INC) -I$(LIBS) -DICACHE_FLASH -mlongcalls -w
+CFLAGS = -I$(SRC) -I$(INC) -I$(LIBS) -DICACHE_FLASH -mlongcalls -std=gnu11
 LDLIBS = -nostdlib -Wl,--start-group -lmain -ldriver -lnet80211 -lwpa -llwip -lpp -lphy -lc -Wl,--end-group -lgcc
 LDFLAGS = -Teagle.app.v6.ld
 
