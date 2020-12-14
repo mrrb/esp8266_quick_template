@@ -9,16 +9,16 @@ DRIVER := ./driver
 BUILD := ./build
 OBJ   := $(BUILD)/obj
 
-SRCS_USER   := $(shell find $(SRC) -name "*.c")
-SRCS_LIBS   := $(shell find $(LIBS) -name "*.c")
 SRCS_DRIVER := $(shell find $(DRIVER) -name "*.c")
+SRCS_LIBS   := $(shell find $(LIBS) -name "*.c")
+SRCS_USER   := $(shell find $(SRC) -name "*.c")
 
-OBJS_USER   := $(patsubst $(SRC)/%.c, $(OBJ)/src/%.o, $(SRCS_USER))
-OBJS_LIBS   := $(patsubst $(LIBS)/%.c, $(OBJ)/libs/%.o, $(SRCS_LIBS))
 OBJS_DRIVER := $(patsubst $(DRIVER)/%.c, $(OBJ)/driver/%.o, $(SRCS_DRIVER))
+OBJS_LIBS   := $(patsubst $(LIBS)/%.c, $(OBJ)/libs/%.o, $(SRCS_LIBS))
+OBJS_USER   := $(patsubst $(SRC)/%.c, $(OBJ)/src/%.o, $(SRCS_USER))
 
-SRCS := $(SRCS_USER) $(SRCS_LIBS) $(SRCS_DRIVER)
-OBJS := $(OBJS_USER) $(OBJS_LIBS) $(OBJS_DRIVER)
+SRCS := $(SRCS_DRIVER) $(SRCS_LIBS) $(SRCS_USER)
+OBJS := $(OBJS_DRIVER) $(OBJS_LIBS) $(OBJS_USER)
 
 #
 CC = xtensa-lx106-elf-gcc
