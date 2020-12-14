@@ -6,7 +6,7 @@ INC   := ./include
 BUILD := ./build
 OBJ   := $(BUILD)/obj
 
-SRCS := $(wildcard $(SRC)/*.c)
+SRCS := $(shell find $(SRC) -name "*.c")
 OBJS := $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 
 #
@@ -27,7 +27,7 @@ $(BUILD)/$(PR_NAME): $(OBJS)
 	$(CC) $^ $(LDLIBS) $(LDFLAGS) -o $@
 
 $(OBJ)/%.o: $(SRC)/%.c
-	mkdir -p $(OBJ)
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJS): $(SRCS)
