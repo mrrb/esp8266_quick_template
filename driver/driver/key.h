@@ -25,6 +25,7 @@
 #ifndef __KEY_H__
 #define __KEY_H__
 
+#include "espmissing.h"
 #include "gpio.h"
 
 typedef void (* key_function)(void);

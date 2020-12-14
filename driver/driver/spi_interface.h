@@ -29,6 +29,7 @@
 #ifndef __SPI_INTERFACE_H__
 #define __SPI_INTERFACE_H__
 
+#include "espmissing.h"
 #include "driver/spi_register.h"
 #include "c_types.h"
 

@@ -25,6 +25,7 @@
 #ifndef SPI_APP_H
 #define SPI_APP_H
 
+#include "espmissing.h"
 #include "spi_register.h"
 #include "ets_sys.h"
 #include "osapi.h"

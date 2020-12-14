@@ -25,6 +25,7 @@
 #ifndef UART_APP_H
 #define UART_APP_H
 
+#include "espmissing.h"
 #include "uart_register.h"
 #include "eagle_soc.h"
 #include "c_types.h"

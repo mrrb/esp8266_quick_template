@@ -24,7 +24,9 @@
 
 #ifndef __SDIO_SLAVE_H__
 #define __SDIO_SLAVE_H__
-#include "c_types.h"
+
+#include "espmissing.h"
+#include "c_types.h"
 #include "user_interface.h"
 
 #define RX_AVAILIBLE 2
