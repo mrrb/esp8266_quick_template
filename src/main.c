@@ -26,6 +26,6 @@ user_init()
     gpio_init();
     GPIO2_OUTPUT_SET;
 
-    os_timer_setfn(&timer, (os_timer_func_t *)blink, NULL);
-    os_timer_arm(&timer, 500, 1);
+    os_timer_setfn((os_timer_t*)&timer, (os_timer_func_t*)blink, NULL);
+    os_timer_arm((os_timer_t*)&timer, 500, 1);
 }
