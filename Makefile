@@ -23,8 +23,11 @@ OBJS := $(OBJS_DRIVER) $(OBJS_LIBS) $(OBJS_USER)
 #
 CC = xtensa-lx106-elf-gcc
 CFLAGS = -I$(SRC) -I$(INC) -I$(LIBS) -I$(DRIVER) -DICACHE_FLASH -mlongcalls -std=gnu11
-LDLIBS = -nostdlib -Wl,--start-group -lmain -lnet80211 -lwpa -llwip -lpp -lphy -lc -Wl,--end-group -lgcc
+
 LDFLAGS = -Teagle.app.v6.ld
+LDLIBS  = -nostdlib -Wl,--start-group
+LDLIBS += -lmain -lnet80211 -lwpa -llwip -lpp -lphy -lc -lgcc -lm
+LDLIBS += -Wl,--end-group
 
 #
 all: $(BUILD)/$(PR_NAME)-0x00000.bin
@@ -44,7 +47,7 @@ $(OBJ)/%.o: %.c
 $(OBJS): $(SRCS)
 
 flash: $(BUILD)/$(PR_NAME)-0x00000.bin $(BUILD)/$(PR_NAME)-0x10000.bin
-	esptool.py write_flash 0 $(word 1,$^) 0x10000 $(word 2,$^)
+	esptool.py -a soft_reset write_flash 0 $(word 1,$^) 0x10000 $(word 2,$^)
 
 clean:
 	rm -fr ./build/
