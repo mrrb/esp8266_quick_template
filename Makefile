@@ -41,7 +41,7 @@ $(BUILD)/$(PR_NAME): $(OBJS)
 	$(CC) $^ $(LDLIBS) $(LDFLAGS) -o $@
 
 $(OBJ)/%.o: %.c
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJS): $(SRCS)
